@@ -70,19 +70,34 @@ class QuestionViewController: UIViewController {
     }
     
     private func tapAnswer() {
-        Observable.combineLatest(
-            firstAnswerButton.rx.tap,
-            secondAnswerButton.rx.tap,
-            thirdAnswerButton.rx.tap
-        ).bind(to: tapBinder)
-        .disposed(by: disposeBag)
+        firstAnswerButton.rx.tap.bind(to: firstTap).disposed(by: disposeBag)
+        secondAnswerButton.rx.tap.bind(to: secondTap).disposed(by: disposeBag)
+        thirdAnswerButton.rx.tap.bind(to: thirdTap).disposed(by: disposeBag)
     }
     
-    private var tapBinder: Binder<((),(),())> {
+    private var firstTap: Binder<()> {
         return Binder(self) { base, _ in
-            // 回答画面表示
-//            base.present(QuestionViewController(inject: base.viewModel), animated: true) {
-//            }
+            base.setAnswer(index: 0)
         }
+    }
+
+    private var secondTap: Binder<()> {
+        return Binder(self) { base, _ in
+            base.setAnswer(index: 1)
+        }
+    }
+
+    private var thirdTap: Binder<()> {
+        return Binder(self) { base, _ in
+            base.setAnswer(index: 2)
+        }
+    }
+
+    private func setAnswer(index: Int) {
+        let answer = answers[index]
+        let newAnswer = SelectAnswer(answer.text, answer.correct, true)
+        answers[index] = newAnswer
+        viewModel.select(value: answers)
+        // present(QuestionViewController(inject: base.viewModel), animated: true) {}
     }
 }
