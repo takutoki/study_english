@@ -26,7 +26,7 @@ extension BaseAPIProtocol {
     
     func request(url: String, method: HTTPMethod, parameters: [String : String]? ) -> Observable<ResponseData> {
         return Observable.create{ observer in
-            _ = AF.request(url, method: method, parameters: parameters, encoder: URLEncodedFormParameterEncoder(destination: .httpBody), headers: self.headers)
+            _ = AF.request(url, method: method, parameters: parameters, headers: self.headers)
                 .responseJSON{ response in self.handleResponse(observer, response) }
                 .resume()
             

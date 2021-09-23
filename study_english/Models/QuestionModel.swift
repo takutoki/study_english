@@ -10,28 +10,38 @@ import RxRelay
 
 protocol QuestionModelProtocol: AnyObject {
     
-    var questionStream: Observable<QuestionResponse> { get }
+    var questionStream: Observable<QuestionResponse.Question> { get }
+    var answerStream: Observable<[QuestionResponse.Answer]> { get }
     var errorStream: Observable<String> { get }
+    
+    func getQuestion()
 }
 
 class QuestionModel: QuestionModelProtocol, QuestionApiRequestable {
     
-    private let question: BehaviorRelay<QuestionResponse> =
-        BehaviorRelay(value: QuestionResponse.initialValue())
+    private let question: BehaviorRelay<QuestionResponse.Question> =
+        BehaviorRelay(value: QuestionResponse.Question(word: "", question: "", audio: ""))
+    private let answer: BehaviorRelay<[QuestionResponse.Answer]> = BehaviorRelay(value: [])
     private let someError: BehaviorRelay<String> = BehaviorRelay(value: "")
     
-    var questionStream: Observable<QuestionResponse> { question.asObservable() }
+    var questionStream: Observable<QuestionResponse.Question> { question.asObservable() }
+    var answerStream: Observable<[QuestionResponse.Answer]> { answer.asObservable() }
     var errorStream: Observable<String> { someError.asObservable() }
     
     var disposeBag: DisposeBag = DisposeBag()
     var requester: QuestionApi = QuestionApi()
     
     init(){
+        getQuestion()
+    }
+    
+    func getQuestion() {
         get(path: "", parameters: [:], onNext: onNext)
     }
     
     func onNext(response: QuestionResponse) -> () {
-        question.accept(response)
+        question.accept(response.question)
+        answer.accept(response.answer)
     }
     
     func handleError(error: Error) {
