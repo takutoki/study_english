@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuestionViewController" customModule="study_english" customModuleProvider="target">
+            <connections>
+                <outlet property="firstAnswerButton" destination="S6M-Nv-rpL" id="0Ug-Xb-vTG"/>
+                <outlet property="instructionLabel" destination="8fw-aT-m45" id="5oV-LL-ftK"/>
+                <outlet property="secondAnswerButton" destination="L73-i1-Yf3" id="R03-7s-PdN"/>
+                <outlet property="thirdAnswerButton" destination="4gs-uY-vTa" id="UKC-SF-cGn"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="wordLabel" destination="g6g-bS-IsN" id="W0N-rJ-Fvq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fw-aT-m45" userLabel="instructionLabel">
+                    <rect key="frame" x="20" y="74" width="374" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="AzZ-Xs-2Q5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6g-bS-IsN" userLabel="wordLabel">
+                    <rect key="frame" x="20" y="199" width="374" height="318"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="55" id="pWl-Tw-fxK"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6M-Nv-rpL" userLabel="firstAnswerButton" customClass="AnswerButton" customModule="study_english" customModuleProvider="target">
+                    <rect key="frame" x="40" y="617" width="334" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="ddH-YB-Z0l"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L73-i1-Yf3" userLabel="secondAnswerButton" customClass="AnswerButton" customModule="study_english" customModuleProvider="target">
+                    <rect key="frame" x="40" y="677" width="334" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="IK6-bq-DIG"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gs-uY-vTa" userLabel="thirdAnswerButton" customClass="AnswerButton" customModule="study_english" customModuleProvider="target">
+                    <rect key="frame" x="40" y="732" width="334" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="9Wz-Ob-1aF"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="8fw-aT-m45" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="2az-sB-4xG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="g6g-bS-IsN" secondAttribute="trailing" constant="20" id="ANS-gY-iaA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4gs-uY-vTa" secondAttribute="trailing" constant="40" id="DJI-NV-vUI"/>
+                <constraint firstItem="g6g-bS-IsN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="E4p-5j-UFz"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="4gs-uY-vTa" secondAttribute="bottom" constant="80" id="F7x-2c-rEO"/>
+                <constraint firstItem="g6g-bS-IsN" firstAttribute="top" secondItem="8fw-aT-m45" secondAttribute="bottom" constant="100" id="Mh7-aJ-Eh7"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="S6M-Nv-rpL" secondAttribute="trailing" constant="40" id="N78-BW-ufJ"/>
+                <constraint firstItem="L73-i1-Yf3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="P7I-zy-cdf"/>
+                <constraint firstItem="S6M-Nv-rpL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="SX6-KQ-1L2"/>
+                <constraint firstItem="L73-i1-Yf3" firstAttribute="top" secondItem="S6M-Nv-rpL" secondAttribute="bottom" constant="10" id="TUg-fY-5KS"/>
+                <constraint firstItem="4gs-uY-vTa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="Uhv-EJ-OVK"/>
+                <constraint firstItem="4gs-uY-vTa" firstAttribute="top" secondItem="L73-i1-Yf3" secondAttribute="bottom" constant="5" id="eMA-sK-4YQ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8fw-aT-m45" secondAttribute="trailing" constant="20" id="hus-NM-MJs"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="L73-i1-Yf3" secondAttribute="trailing" constant="40" id="kgP-zD-FNT"/>
+                <constraint firstItem="8fw-aT-m45" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="odt-sg-Iu0"/>
+                <constraint firstItem="g6g-bS-IsN" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="w4i-1o-bB7"/>
+                <constraint firstItem="S6M-Nv-rpL" firstAttribute="top" secondItem="g6g-bS-IsN" secondAttribute="bottom" priority="900" constant="100" id="wnU-p3-mq2"/>
+            </constraints>
+            <point key="canvasLocation" x="-54" y="151"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="4gs-uY-vTa">
+            <size key="intrinsicContentSize" width="30" height="29"/>
+        </designable>
+        <designable name="L73-i1-Yf3">
+            <size key="intrinsicContentSize" width="30" height="29"/>
+        </designable>
+        <designable name="S6M-Nv-rpL">
+            <size key="intrinsicContentSize" width="30" height="29"/>
+        </designable>
+    </designables>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

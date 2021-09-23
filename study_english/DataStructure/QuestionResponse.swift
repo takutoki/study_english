@@ -9,13 +9,9 @@ import Foundation
 
 struct QuestionResponse: Codable {
     
-    static func initialValue() -> Self {
-        QuestionResponse.init(id: 0, question: Question.init(word: "", question: "", audio: ""), answers: [])
-    }
-    
     let id: Int
     let question: Question
-    let answers: [Answer]
+    let answer: [Answer]
     
     struct Question: Codable {
         let word: String
