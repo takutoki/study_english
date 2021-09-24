@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9FA12E0626FD9286007CFECA /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA12E0526FD9286007CFECA /* AlertPresentable.swift */; };
 		9FE3B05726FAE4B700060387 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE3B05626FAE4B700060387 /* AppDelegate.swift */; };
 		9FE3B05926FAE4B700060387 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE3B05826FAE4B700060387 /* SceneDelegate.swift */; };
 		9FE3B06026FAE4BB00060387 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FE3B05F26FAE4BB00060387 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9FA12E0526FD9286007CFECA /* AlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentable.swift; sourceTree = "<group>"; };
 		9FE3B05326FAE4B700060387 /* study_english.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = study_english.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FE3B05626FAE4B700060387 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FE3B05826FAE4B700060387 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			children = (
 				9FE3B09826FAEA7300060387 /* ApiClient */,
 				9FE3B09B26FAEFF500060387 /* CustomError.swift */,
+				9FA12E0526FD9286007CFECA /* AlertPresentable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				9FE3B05926FAE4B700060387 /* SceneDelegate.swift in Sources */,
 				9FE3B0AE26FAFD3F00060387 /* QuestionModel.swift in Sources */,
 				9FE3B0AB26FAF7A800060387 /* QuestionApiRequestable.swift in Sources */,
+				9FA12E0626FD9286007CFECA /* AlertPresentable.swift in Sources */,
 				9FE3B09C26FAEFF500060387 /* CustomError.swift in Sources */,
 				9FEBBA7926FC5F1F00F9329E /* QuestionViewController.swift in Sources */,
 			);

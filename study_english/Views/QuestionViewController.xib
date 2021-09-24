@@ -16,6 +16,7 @@
                 <outlet property="thirdAnswerButton" destination="4gs-uY-vTa" id="UKC-SF-cGn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="wordLabel" destination="g6g-bS-IsN" id="W0N-rJ-Fvq"/>
+                <outlet property="wordLabelTapGesture" destination="gqC-di-wOi" id="kZl-7o-ruY"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -34,12 +35,16 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6g-bS-IsN" userLabel="wordLabel">
                     <rect key="frame" x="20" y="199" width="374" height="318"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="55" id="pWl-Tw-fxK"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="gqC-di-wOi" appends="YES" id="SXt-VV-bJo"/>
+                    </connections>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6M-Nv-rpL" userLabel="firstAnswerButton" customClass="AnswerButton" customModule="study_english" customModuleProvider="target">
                     <rect key="frame" x="40" y="617" width="334" height="50"/>
@@ -86,6 +91,7 @@
             </constraints>
             <point key="canvasLocation" x="-54" y="151"/>
         </view>
+        <tapGestureRecognizer id="gqC-di-wOi" userLabel="wordLabel Tap Gesture Recognizer"/>
     </objects>
     <designables>
         <designable name="4gs-uY-vTa">

@@ -6,20 +6,24 @@
 //
 
 import UIKit
+import AVFoundation
 import RxSwift
 import RxCocoa
 
-class QuestionViewController: UIViewController {
+class QuestionViewController: UIViewController, AlertPresentable {
 
     @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var firstAnswerButton: AnswerButton!
     @IBOutlet weak var secondAnswerButton: AnswerButton!
     @IBOutlet weak var thirdAnswerButton: AnswerButton!
+    @IBOutlet var wordLabelTapGesture: UITapGestureRecognizer!
     
     private let viewModel: QuestionViewModelProtocol
-    var answers: [SelectAnswer] = []
     
+    var answers: [SelectAnswer] = []
+    var audioURL: String = ""
+    var player = AVAudioPlayer()
     let disposeBag = DisposeBag()
     
     init(inject: QuestionViewModelProtocol) {
@@ -37,6 +41,7 @@ class QuestionViewController: UIViewController {
         bindInstructionLabel()
         bindAnswerText()
         tapAnswer()
+        tapWord()
     }
 
     private func viewInit() {
@@ -44,13 +49,20 @@ class QuestionViewController: UIViewController {
         wordLabel.textAlignment = .center
         wordLabel.font =  UIFont.systemFont(ofSize: 50)
         wordLabel.textColor = .blue
+        wordLabel.isUserInteractionEnabled = true
     }
     
     private func bindInstructionLabel() {
         viewModel.questionStream
-            .map{ $0.word }
-            .bind(to: wordLabel.rx.text)
+            .bind(to: questionBinder)
             .disposed(by: disposeBag)
+    }
+    
+    private var questionBinder: Binder<QuestionResponse.Question> {
+        return Binder(self) { base, q in
+            base.wordLabel.text = q.word
+            base.audioURL = q.audio
+        }
     }
     
     private func bindAnswerText() {
@@ -99,5 +111,41 @@ class QuestionViewController: UIViewController {
         answers[index] = newAnswer
         viewModel.select(value: answers)
         // present(QuestionViewController(inject: base.viewModel), animated: true) {}
+    }
+    
+    private func tapWord() {   
+        wordLabelTapGesture.rx.event
+            .bind(to: tapWordBinder)
+            .disposed(by: disposeBag)
+    }
+    
+    private var tapWordBinder: Binder<UITapGestureRecognizer> {
+        return Binder(self) { base, _ in
+            guard let url = URL(string: base.audioURL) else {
+                base.presentAlert(title: "エラー", message: "音声の再生が失敗しました。")
+                return
+            }
+            let downloadTask = URLSession.shared.downloadTask(with: url) { [weak self] (url, res, error) in
+                self?.play(url: url)
+            }
+            downloadTask.resume()
+        }
+    }
+    
+    private func play(url: URL?) {
+        guard let _url = url else {
+            presentAlert(title: "エラー", message: "音声の再生が失敗しました。")
+            return
+        }
+
+        do {
+            self.player = try AVAudioPlayer(contentsOf: _url)
+            player.prepareToPlay()
+            player.volume = 1.0
+            player.play()
+        } catch let error as NSError {
+            print(error.localizedDescription)
+            presentAlert(title: "エラー", message: "音声の再生が失敗しました。")
+        }
     }
 }
