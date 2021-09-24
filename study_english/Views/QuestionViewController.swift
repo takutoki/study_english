@@ -121,30 +121,29 @@ class QuestionViewController: UIViewController, AlertPresentable {
     
     private var tapWordBinder: Binder<UITapGestureRecognizer> {
         return Binder(self) { base, _ in
-            guard let url = URL(string: base.audioURL) else {
+            if let url = URL(string: "hoge") {
+                let downloadTask = URLSession.shared.downloadTask(with: url) { [weak self] (url, res, error) in
+                    self?.play(url: url)
+                }
+                downloadTask.resume()
+            } else {
                 base.presentAlert(title: "エラー", message: "音声の再生が失敗しました。")
-                return
             }
-            let downloadTask = URLSession.shared.downloadTask(with: url) { [weak self] (url, res, error) in
-                self?.play(url: url)
-            }
-            downloadTask.resume()
         }
     }
     
     private func play(url: URL?) {
-        guard let _url = url else {
-            presentAlert(title: "エラー", message: "音声の再生が失敗しました。")
-            return
-        }
-
-        do {
-            self.player = try AVAudioPlayer(contentsOf: _url)
-            player.prepareToPlay()
-            player.volume = 1.0
-            player.play()
-        } catch let error as NSError {
-            print(error.localizedDescription)
+        if let _url = url {
+            do {
+                self.player = try AVAudioPlayer(contentsOf: _url)
+                player.prepareToPlay()
+                player.volume = 1.0
+                player.play()
+            } catch let error as NSError {
+                print(error.localizedDescription)
+                presentAlert(title: "エラー", message: "音声の再生が失敗しました。")
+            }
+        } else {
             presentAlert(title: "エラー", message: "音声の再生が失敗しました。")
         }
     }

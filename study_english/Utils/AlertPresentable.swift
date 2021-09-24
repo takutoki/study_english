@@ -17,6 +17,12 @@ extension AlertPresentable {
     
     func presentAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        present(alert, animated: true, completion: nil)
+        let ok = UIAlertAction(title: "OK", style: .default) { [weak self] (action) in
+            self?.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(ok)
+        DispatchQueue.main.sync {
+            present(alert, animated: true, completion: nil)
+        }
     }
 }
